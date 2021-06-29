@@ -1,0 +1,45 @@
+mixin picture-helper(images, lazyload = false)
+    if (lazyload)
+        picture(class=(typeof lazyload === 'boolean') ? 'lazy-picture' : lazyload)
+            if (images.desktop)
+                source(
+                    data-srcset=require(`@/assets/images/${images.desktop}`)
+                    media='(min-width: 1280px)'
+                )
+            if (images.laptop)
+                source(
+                    data-srcset=require(`@/assets/images/${images.laptop}`)
+                    media='(min-width: 1024px)'
+                )
+            if (images.tablet)
+                source(
+                    data-srcset=require(`@/assets/images/${images.tablet}`)
+                    media='(min-width: 768px)'
+                )
+            if (images.mobile)
+                img(
+                    data-src=require(`@/assets/images/${images.mobile}`)
+                    alt=""
+                )&attributes(attributes)
+    else
+        picture
+            if (images.desktop)
+                source(
+                    srcset=require(`@/assets/images/${images.desktop}`)
+                    media='(min-width: 1280px)'
+                )
+            if (images.laptop)
+                source(
+                    srcset=require(`@/assets/images/${images.laptop}`)
+                    media='(min-width: 1024px)'
+                )
+            if (images.tablet)
+                source(
+                    srcset=require(`@/assets/images/${images.tablet}`)
+                    media='(min-width: 768px)'
+                )
+            if (images.mobile)
+                img(
+                    src=require(`@/assets/images/${images.mobile}`)
+                    alt=""
+                )&attributes(attributes)

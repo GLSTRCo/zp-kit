@@ -1,0 +1,35 @@
+@import 'fonts';
+@import 'variables';
+@import 'mixins';
+
+@import 'normalize.css';
+
+/* BEM blocks */
+@import '../blocks/**/*.scss';
+
+html {
+    height: 100%;
+}
+
+body {
+    min-width: 320px;
+
+    font-family: $font;
+    color: $text-color;
+
+    display: flex;
+    flex-flow: column nowrap;
+
+    &.menu-opened,
+    &.modal-opened {
+        overflow: hidden;
+    }
+}
+
+h1 {
+    color: teal;
+}
+
+.logo {
+    @include container;
+}

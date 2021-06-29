@@ -1,0 +1,107 @@
+.modal {
+    display: none;
+
+    &.is-open {
+        display: block;
+    }
+
+    &[aria-hidden='false'] .modal__overlay {
+        animation: mmfadeIn 300ms cubic-bezier(0, 0, 0.2, 1);
+    }
+
+    &[aria-hidden='true'] .modal__overlay {
+        animation: mmfadeOut 300ms cubic-bezier(0, 0, 0.2, 1);
+    }
+
+    &[aria-hidden='false'] .modal__dialog {
+        animation: mmslideIn 300ms cubic-bezier(0, 0, 0.2, 1);
+    }
+
+    &[aria-hidden='true'] .modal__dialog {
+        animation: mmslideOut 300ms cubic-bezier(0, 0, 0.2, 1);
+    }
+
+    &__overlay,
+    &__dialog {
+        will-change: transform;
+
+        outline: none;
+    }
+
+    &__overlay {
+        position: fixed;
+        z-index: 99;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(white, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        overflow: hidden;
+    }
+
+    &__dialog {
+        position: relative;
+        width: calc(100% - 48px);
+    }
+
+    &__close {
+        @include btn-reset;
+        position: absolute;
+        z-index: 19;
+        width: 32px;
+        height: 32px;
+        top: 16px;
+        right: 16px;
+
+        cursor: pointer;
+
+        svg {
+            @include svg-icon;
+
+            stroke: $text-color;
+            stroke-width: 1.4px;
+
+            pointer-events: none;
+        }
+    }
+}
+
+@keyframes mmfadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes mmfadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes mmslideIn {
+    from {
+        transform: translateY(15%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes mmslideOut {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-10%);
+    }
+}

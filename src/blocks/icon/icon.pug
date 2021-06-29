@@ -1,0 +1,9 @@
+mixin icon(name, type, addClass = '', modifier)
+    -const mod = modifier || ''
+    -const svgClass = blockName ? blockName + '__svg ' + mod : ''
+    -const useClass = blockName ? blockName + '__use ' + mod : ''
+    svg(class=addClass aria-label='Иконка')
+        if (type === 'fill')
+            use(class=useClass xlink:href="images/html-sprite-fill.svg#" + name)
+        else
+            use(class=useClass xlink:href='/assets/images/svg-sprite.svg#' + name)

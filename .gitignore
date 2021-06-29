@@ -1,0 +1,12 @@
+.yarn/*
+!.yarn/releases
+!.yarn/patches
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+.vscode/
+
+./dist
+./node_modules
+deploy-config.js

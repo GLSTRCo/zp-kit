@@ -1,0 +1,9 @@
+mixin dev-nav()
+    +b.SECTION.dev-nav
+        +e.H1.heading Навигация по сайту
+        +e.block
+            +e.H2.block-title Основные страницы
+            +e.UL.list
+                each page in devNav.main
+                    +e.LI.item
+                        +e.A.link(href=page.link)= page.text

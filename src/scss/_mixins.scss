@@ -1,0 +1,238 @@
+@import 'variables';
+
+@mixin container {
+    position: relative;
+
+    width: 100%;
+    margin: 0 auto;
+    min-width: 320px;
+    max-width: 1440px;
+    padding-left: 16px;
+    padding-right: 16px;
+
+    @media #{$tablet} {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    // @media #{$laptop} {
+    //     padding-left: 80px;
+    //     padding-right: 80px;
+    // }
+
+    // @media #{$desktop} {
+    //     padding-left: 40px;
+    //     padding-right: 40px;
+    // }
+}
+
+@mixin btn-reset {
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+@mixin list-reset {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+@mixin visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+@mixin svg-icon {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+@mixin img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+@mixin aspect-ratio($width, $height) {
+    position: relative;
+
+    &:before {
+        display: block;
+        content: '';
+        width: 100%;
+        padding-top: ($height / $width) * 100%;
+    }
+
+    > .content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+}
+
+@mixin hideScrollbar() {
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+@mixin real-hover {
+    @media (hover: hover) {
+        &:hover {
+            @content;
+        }
+    }
+}
+
+/* TYPOGRAPHY
+   -----------  */
+
+@mixin common-text {
+    font-size: 16px;
+    line-height: 1.6;
+
+    p {
+        margin: 0 0 16px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    @media #{$tablet} {
+        font-size: 18px;
+
+        p {
+            margin: 0 0 24px;
+        }
+    }
+}
+
+@mixin common-list {
+    padding: 0;
+    padding-top: 8px;
+    margin: 0;
+    list-style: none;
+
+    font-size: 16px;
+    line-height: 1.6;
+
+    &:last-child {
+        margin-bottom: -16px; //compensate li margin
+    }
+
+    li {
+        position: relative;
+        padding-left: 32px;
+        margin-bottom: 16px;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 0;
+            width: 16px;
+            height: 14px;
+
+            background-image: url("data:image/svg+xml,%3Csvg width='16' height='14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16 6.979c0-.804-1.099-1.394-2.411-1.394h-2.96c-.378 0-.517-.058-.755-.312L5.28.254C5.134.09 4.953 0 4.765 0H3.96c-.18 0-.279.164-.189.353l2.37 5.232-3.846.385L1.05 3.7c-.099-.156-.214-.23-.435-.23H.28c-.172 0-.279.09-.279.279v6.462c0 .189.107.279.279.279h.336c.221 0 .336-.074.435-.23l1.246-2.271 3.846.377-2.37 5.24c-.09.189.009.353.19.353h.803c.188 0 .369-.09.516-.254l4.593-5.02c.238-.253.377-.32.754-.32h2.96C14.902 8.365 16 7.784 16 6.98z' fill='%23fff'/%3E%3C/svg%3E");
+        }
+    }
+
+    @media #{$tablet} {
+        margin-bottom: 8px;
+        column-count: 2;
+        column-gap: 24px;
+
+        font-size: 18px;
+    }
+}
+
+@mixin ordered-list {
+    padding: 0;
+    padding-top: 8px;
+    margin: 0 0 16px;
+    list-style: none;
+
+    font-size: 16px;
+    line-height: 1.6;
+
+    counter-reset: ordered-list;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    li {
+        position: relative;
+        padding-left: 32px;
+        margin-bottom: 12px;
+
+        counter-increment: ordered-list;
+
+        &::before {
+            position: absolute;
+            left: 0;
+            top: 0;
+
+            content: counter(ordered-list) '.';
+            width: 28px;
+            margin-right: 8px;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    @media #{$tablet} {
+        margin-bottom: 24px;
+
+        font-size: 18px;
+    }
+}
+
+@mixin common-link {
+    color: $text-color-white;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    text-decoration: underline;
+
+    transition: opacity 300ms ease;
+
+    &:hover,
+    &:active,
+    &:focus {
+        opacity: 0.6;
+    }
+}
+
+@mixin gradient-text {
+    @supports (-webkit-text-fill-color: transparent) {
+        display: inline-block;
+
+        background-image: $theme-gradient;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}

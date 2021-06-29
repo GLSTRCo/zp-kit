@@ -1,0 +1,9 @@
+.inner {
+    @include container;
+}
+
+// @media #{$desktop} {
+//     .inner {
+//         padding: 0 56px;
+//     }
+// }

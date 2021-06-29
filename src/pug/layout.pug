@@ -1,0 +1,19 @@
+include ../../bemto/bemto.pug
+include ./header.pug
+
+//- common blocks to import only once
+include ../blocks/inner/inner.pug
+include ../blocks/picture-helper/picture-helper.pug
+include ../blocks/img/img.pug
+include ../blocks/icon/icon.pug
+
+block variables
+
+doctype html
+html(lang='ru')
+    head
+        +doc-header('Название сайта')
+        block head
+    body(class=(bodyClass || ''))
+        block page
+        block modals
