@@ -4,17 +4,16 @@
  *
  * see '@/src/blocks/modal' for base layout example and common styles
  *
- * Exports show and close methods
+ * Exports show and close methods and global click listener
  */
 
-import { getScrollbarWidth, compensateScrollbarWidth } from '@/js/modules/ui';
+import { compensateScrollbarWidth } from '@/js/modules/ui';
 import MicroModal from 'micromodal';
 
 function onModalOpen(modal) {
-    const scrollBarWidth = getScrollbarWidth();
+    const modalOverlay = modal.querySelector('.modal__overlay');
 
-    compensateScrollbarWidth('set');
-    modal.children[0].style.paddingRight = scrollBarWidth + 'px';
+    compensateScrollbarWidth('set', modalOverlay);
 }
 
 function onModalClose(modal, remove = true, modalCopy = false) {
@@ -42,9 +41,8 @@ function onModalClose(modal, remove = true, modalCopy = false) {
     }
 
     function resetPadding() {
-        modal.children[0].style.paddingRight = null;
-
-        compensateScrollbarWidth('reset')
+        const modalOverlay = modal.querySelector('.modal__overlay');
+        compensateScrollbarWidth('reset', modalOverlay);
     }
 }
 
@@ -74,7 +72,7 @@ function onModalClose(modal, remove = true, modalCopy = false) {
  */
 function showModal(
     id,
-    { onShown = null, onClosed = null, removeOnClose = false} = {}
+    { onShown = null, onClosed = null, removeOnClose = false } = {}
 ) {
     MicroModal.show(id, {
         disableScroll: true,
@@ -116,7 +114,18 @@ function closeModal(id) {
     });
 }
 
+function listenTriggers() {
+    document.addEventListener('click', e => {
+        const trigger = e.target.closest('[data-modal]');
+        if (trigger) {
+            const modalID = trigger.dataset.modal;
+            showModal(modalID);
+        }
+    });
+}
+
 export default {
     showModal,
     closeModal,
+    listenTriggers,
 };

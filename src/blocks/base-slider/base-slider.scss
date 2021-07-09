@@ -1,0 +1,63 @@
+.base-slider {
+    &__slides {
+        width: calc(100% + 32px);
+        margin-left: -16px;
+    }
+
+    &__slide {
+        width: 100%;
+        padding: 16px;
+    }
+
+    &__card {
+        padding: 100px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+        font-size: 24px;
+        font-weight: 700;
+
+        background-color: #fff;
+        border-radius: 16px;
+        box-shadow: 0 0 24px 6px rgba($text-color, 0.03);
+    }
+
+    &__controls {
+        display: flex;
+        justify-content: center;
+        padding-top: 24px;
+    }
+
+}
+
+@media #{$tablet} {
+    .base-slider {
+        &__slides {
+        }
+
+        &__slide {
+            width: 50%;
+        }
+    }
+}
+
+@media #{$laptop} {
+    .base-slider {
+
+    }
+}
+
+@media #{$desktop} {
+    .base-slider {
+        &__slides {
+
+        }
+
+        &__slide {
+            width: calc(100% / 3);
+            padding: 32px 16px;
+        }
+    }
+}

@@ -1,0 +1,23 @@
+.common-form {
+    &__row {
+        display: flex;
+        flex-flow: row wrap;
+        margin: 0 -16px;
+    }
+
+    &__input {
+        width: 10%;
+        flex: 1 1 auto;
+        padding: 0 16px 24px;
+    }
+}
+
+@media #{$tablet} {
+    .common-form {
+    }
+}
+
+@media #{$desktop} {
+    .common-form {
+    }
+}

@@ -1,7 +1,44 @@
 extends ../layout
 
-include ../../blocks/dev-nav/dev-nav
+include ../../blocks/base-slider/base-slider
+include ../../blocks/base-modal/base-modal
+include ../../blocks/common-form/common-form
+include ../../blocks/custom-input/custom-input
+include ../../blocks/custom-checkbox/custom-checkbox
+include ../../blocks/custom-radio/custom-radio
 
 block page
     +inner
-        +dev-nav
+        h1 Demo
+        .demo-section
+            +base-slider
+        .demo-section
+            button.btn(type='button' data-modal='baseModal') Открыть модалку
+        .demo-section
+            h2 Lightbox
+            p No need for demo
+            p
+                a(href='https://fslightbox.com/') just use
+        .demo-section
+            h2 Common Form
+            +common-form
+                +e.row
+                    +e.input
+                        +custom-input({name: 'name', id: 'name', label: 'Имя'})
+                +e.row
+                    +e.input
+                        +custom-input({name: 'email', id: 'email', label: 'Email'})
+                    +e.input
+                        +custom-input({name: 'phone', id: 'phone', label: 'Телефон'})
+                +e.row
+                    +e.input
+                        +custom-checkbox({name: 'agree', id: 'agree',label: 'тыкни меня'})
+                    +e.input
+                        +custom-radio({name: 'choice', id: 'choice', label: 'А меня ты не сможешь выключить'})
+                +e.row
+                    +e.input
+                        +e.BUTTON.submit.btn.--transparent(type='submit') Отправить
+
+
+block modals
+    +base-modal

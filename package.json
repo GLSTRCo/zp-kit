@@ -52,6 +52,11 @@
     "webpack-import-glob-loader": "^1.6.3"
   },
   "dependencies": {
-    "normalize.css": "^8.0.1"
+    "flickity": "^2.2.2",
+    "flickity-imagesloaded": "^2.0.0",
+    "inputmask": "^5.0.6",
+    "micromodal": "^0.4.6",
+    "normalize.css": "^8.0.1",
+    "smoothscroll-polyfill": "^0.4.4"
   }
 }

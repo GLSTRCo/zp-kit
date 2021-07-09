@@ -1,0 +1,4 @@
+mixin custom-checkbox({name, id, label = '', required = false})
+    +b.custom-checkbox
+        +e.INPUT.input(type='checkbox' name=name id=id required=required)&attributes(attributes)
+        +e.LABEL.label(for=id) !{label}

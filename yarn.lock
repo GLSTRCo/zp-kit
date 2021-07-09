@@ -3503,6 +3503,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"desandro-matches-selector@npm:^2.0.0":
+  version: 2.0.2
+  resolution: "desandro-matches-selector@npm:2.0.2"
+  checksum: b16d94b0693e6981652445e55808764df2622033b2cd942163d6e492bb5108c26bef7f68e63973966cb210ec493c4fcc299b48aa50814892e8ebb6692ce84d9b
+  languageName: node
+  linkType: hard
+
 "destroy@npm:~1.0.4":
   version: 1.0.4
   resolution: "destroy@npm:1.0.4"
@@ -3955,6 +3962,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ev-emitter@npm:^1.0.0, ev-emitter@npm:^1.0.1, ev-emitter@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "ev-emitter@npm:1.1.1"
+  checksum: c93adf4cfac74892e0eede007d2481b9621d345e97884ea06d1cf5bcfccf7c6a6d5e15aba9369b66c4087967b338694710508eb11253f01bba9e216359811153
+  languageName: node
+  linkType: hard
+
 "eventemitter3@npm:^4.0.0":
   version: 4.0.7
   resolution: "eventemitter3@npm:4.0.7"
@@ -4288,10 +4302,43 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fizzy-ui-utils@npm:^2.0.7":
+  version: 2.0.7
+  resolution: "fizzy-ui-utils@npm:2.0.7"
+  dependencies:
+    desandro-matches-selector: ^2.0.0
+  checksum: a4dd1c4f8cb425e890ae7a9068e3645b9cc01ddc86df961a6383f1aca5c38aae9862d2c08163dd7e693f1bd550adc11892288aa8519ef9618b17e5db8afebabe
+  languageName: node
+  linkType: hard
+
 "flatten@npm:^1.0.2":
   version: 1.0.3
   resolution: "flatten@npm:1.0.3"
   checksum: 8a382594dc7bb4e4f28739a4abcd9d6f5c74d4be370892c10386a09656722e1a822137dc48c4bff15758e0656f8fee7bb3001133d068431796cf17b1f52a969a
+  languageName: node
+  linkType: hard
+
+"flickity-imagesloaded@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "flickity-imagesloaded@npm:2.0.0"
+  dependencies:
+    flickity: ^2.0.0
+    imagesloaded: ^4.1.0
+  checksum: cdcffdf162d6dd53aee8aed3230c6d72876d1e1d0a84541a47fbc551dec5ee3445c136a8592eb676b7131f35170af0a09b785103417315ec2df0b4e6ae5a24c9
+  languageName: node
+  linkType: hard
+
+"flickity@npm:^2.0.0, flickity@npm:^2.2.2":
+  version: 2.2.2
+  resolution: "flickity@npm:2.2.2"
+  dependencies:
+    desandro-matches-selector: ^2.0.0
+    ev-emitter: ^1.1.1
+    fizzy-ui-utils: ^2.0.7
+    get-size: ^2.0.3
+    unidragger: ^2.3.0
+    unipointer: ^2.3.0
+  checksum: bfd226d8545d283b6ccf7120653a03c261c46bd606f8200d1f25d439d9ba4184bac3ac30aaa83d29330d53c74bb905e61f9455ad50bd11e43f6f776e31d276a0
   languageName: node
   linkType: hard
 
@@ -4466,6 +4513,13 @@ fsevents@~2.3.1:
     has: ^1.0.3
     has-symbols: ^1.0.1
   checksum: 1916051d494f7265bf1072bf0243052d79be1d38fa2fa4561695ee7162a2c29f208fbc4ad3c82c340eb1ca5c788ec11791a5e345ff7d35f789438b237c941271
+  languageName: node
+  linkType: hard
+
+"get-size@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "get-size@npm:2.0.3"
+  checksum: 31c88b42fea7f60e6921a4d67ea2314fc29b815adfccefe1e8ea48fb6f544c04878b90bd213183fb4ff79a7d05070ed29083c44f5d7b8c2460c91ce9ea35d123
   languageName: node
   linkType: hard
 
@@ -4999,6 +5053,15 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"imagesloaded@npm:^4.1.0":
+  version: 4.1.4
+  resolution: "imagesloaded@npm:4.1.4"
+  dependencies:
+    ev-emitter: ^1.0.0
+  checksum: f7542689485c6a9355f139e87af9511a718e68e79cba83154560f356d0b2a333c998ccd0140d9a2d0adbd3deb807ce1de5935fcfe2d0e3216641ddaed267a31d
+  languageName: node
+  linkType: hard
+
 "import-fresh@npm:^2.0.0":
   version: 2.0.0
   resolution: "import-fresh@npm:2.0.0"
@@ -5092,6 +5155,13 @@ fsevents@~2.3.1:
   version: 2.0.3
   resolution: "inherits@npm:2.0.3"
   checksum: 9488f9433effbc24474f6baee8014e5337c7f99305ecb4204fa5864ae7655c24225780d87fc65ed8d3d374715a18c5dc8c69fe3bf9745cde2e7acd0ac068a07b
+  languageName: node
+  linkType: hard
+
+"inputmask@npm:^5.0.6":
+  version: 5.0.6
+  resolution: "inputmask@npm:5.0.6"
+  checksum: 09dfdd52724a89041a52db381990f2e7d993dc77e5507e1f0fe9bd0a1b6979805b343e41c60b9244cd5698a4b889a935deb42c979d7e9717589277061c015419
   languageName: node
   linkType: hard
 
@@ -6107,6 +6177,13 @@ fsevents@~2.3.1:
     braces: ^3.0.1
     picomatch: ^2.0.5
   checksum: 0cb0e11d647cbb65e398a0a8a1340a7fb751ae2722346219c435704cfac8b3275a94a6464236fe867f52ad46a24046d3bc4ac11b3d21ddb73bc44e27cf1e4904
+  languageName: node
+  linkType: hard
+
+"micromodal@npm:^0.4.6":
+  version: 0.4.6
+  resolution: "micromodal@npm:0.4.6"
+  checksum: 1a3df5ee6d61ea2a652e991ddc39ba82a51f880ecd01efee32373cc862a5a33a36f8f1e21f88ccf7d95e355683e3ae7f7fcac1100a8c98f8535cfa3cd5b78ffa
   languageName: node
   linkType: hard
 
@@ -8868,6 +8945,13 @@ resolve@^1.9.0:
   languageName: node
   linkType: hard
 
+"smoothscroll-polyfill@npm:^0.4.4":
+  version: 0.4.4
+  resolution: "smoothscroll-polyfill@npm:0.4.4"
+  checksum: a2643f711caad9d31ff181c3be976430c32dfcc4c46d5652b86b4166ea8f3693341c0a61f13d57e93b803ac05ccb1a8e30830581686c5d125ab2875ff2fd0bce
+  languageName: node
+  linkType: hard
+
 "snapdragon-node@npm:^2.0.1":
   version: 2.1.1
   resolution: "snapdragon-node@npm:2.1.1"
@@ -9569,6 +9653,15 @@ resolve@^1.9.0:
   languageName: node
   linkType: hard
 
+"unidragger@npm:^2.3.0":
+  version: 2.3.1
+  resolution: "unidragger@npm:2.3.1"
+  dependencies:
+    unipointer: ^2.3.0
+  checksum: 808faeb3ea244c9c36125243aa35b1b3377ee08b92b8a8b8e791faf2b09cbcb8e1b81b232d47b4fb02b6652aa6638594cbfbf73190d95bcf7820df88f1d1c556
+  languageName: node
+  linkType: hard
+
 "union-value@npm:^1.0.0":
   version: 1.0.1
   resolution: "union-value@npm:1.0.1"
@@ -9578,6 +9671,15 @@ resolve@^1.9.0:
     is-extendable: ^0.1.1
     set-value: ^2.0.1
   checksum: bd6ae611f09e98d3918ee425b0cb61987e9240672c9822cfac642b0240e7a807c802c1968e0205176d7fa91ca0bba5f625a6937b26b2269620a1402589852fd8
+  languageName: node
+  linkType: hard
+
+"unipointer@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "unipointer@npm:2.3.0"
+  dependencies:
+    ev-emitter: ^1.0.1
+  checksum: 27d8f134a97757923c5b6354457b98935d7cdbbf90198c85d38c42c1e259c31293f825f330263cb27ff852488b50eff36f83b4f5225600244dc639032ff2269f
   languageName: node
   linkType: hard
 
@@ -9976,12 +10078,16 @@ resolve@^1.9.0:
     css-minimizer-webpack-plugin: ^1.2.0
     cssnano: ^4.1.10
     file-loader: ^6.2.0
+    flickity: ^2.2.2
+    flickity-imagesloaded: ^2.0.0
     ftp-deploy: ^2.4.1
     glob: ^7.1.6
     html-loader: ^1.3.2
     html-webpack-plugin: ^5.0.0-beta.4
     imagemin: ^7.0.1
     imagemin-svgo: ^8.0.0
+    inputmask: ^5.0.6
+    micromodal: ^0.4.6
     mini-css-extract-plugin: ^1.3.3
     normalize.css: ^8.0.1
     postcss: ^8.2.6
@@ -9993,6 +10099,7 @@ resolve@^1.9.0:
     rimraf: ^3.0.2
     sass: ^1.32.7
     sass-loader: ^11.0.1
+    smoothscroll-polyfill: ^0.4.4
     source-map: ^0.7.3
     style-loader: ^2.0.0
     svgstore-cli: ^2.0.0

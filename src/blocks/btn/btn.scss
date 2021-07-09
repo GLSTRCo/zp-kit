@@ -1,0 +1,64 @@
+.btn {
+    padding: 12px 32px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    color: $text-color;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+
+    background-color: $theme-color;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+    border-radius: 99px;
+
+    outline: none;
+
+    transition: background-color 300ms ease;
+
+    &:hover,
+    &:active {
+        background-color: rgba($theme-color, 0.6);
+    }
+
+    &:focus-visible {
+        background-color: rgba($theme-color, 0.6);
+    }
+
+    &--small {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    &--transparent {
+        background-color: transparent;
+        border: 1px solid $theme-color;
+
+        &:hover,
+        &:active {
+            background-color: $theme-color;
+        }
+
+        &:focus-visible {
+            background-color: $theme-color;
+        }
+    }
+
+    &.disabled,
+    &:disabled {
+        opacity: 0.5;
+        cursor: initial;
+
+        pointer-events: none;
+
+        // &:hover,
+        // &:active,
+        // &:focus {
+        //     opacity: 0.5;
+        // }
+    }
+}

@@ -1,0 +1,4 @@
+mixin custom-radio({name, id, label = '', required = false})
+    +b.custom-radio
+        +e.INPUT.input(type='radio' name=name id=id required=required)&attributes(attributes)
+        +e.LABEL.label(for=id) !{label}

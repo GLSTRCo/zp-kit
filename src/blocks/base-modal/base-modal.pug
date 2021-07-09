@@ -1,0 +1,11 @@
+
+mixin base-modal(data)
+    .modal#baseModal(aria-hidden='true')
+        +b.base-modal
+            .modal__overlay(tabindex='-1' data-micromodal-close='')
+                .modal__dialog(role='dialog' aria-modal='true' aria-labelledby='Просмотр отзыва'  data-micromodal-close='')
+                    +e.body
+                        +e.BUTTON.close.modal__close(aria-label='Закрыть окно' data-micromodal-close='')
+                            +icon('close')
+                        h2 Заголовок
+                        p Текст

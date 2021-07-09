@@ -1,0 +1,29 @@
+@import '../modal/modal.scss';
+
+.base-modal {
+    &__body {
+        position: relative;
+
+        margin: 0 auto;
+        padding: 55px 24px;
+        width: 100%;
+        max-width: 700px;
+
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.04);
+    }
+}
+
+@media #{$tablet} {
+    .base-modal {
+        &__body {
+            padding: 72px 48px;
+        }
+    }
+}
+
+@media #{$desktop} {
+    .base-modal {
+    }
+}

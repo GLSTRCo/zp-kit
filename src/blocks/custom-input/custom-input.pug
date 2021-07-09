@@ -1,0 +1,12 @@
+mixin custom-input({ inputType = 'text', id, name, label = false, placeholder = false, required = false, error = false, isValid = false })
+    +b.custom-input(class=isValid ? 'valid' : '')
+        if (inputType === 'textarea')
+            +e.TEXTAREA.input.--textarea(id=id name=name placeholder=placeholder required=required)&attributes(attributes)
+        else
+            +e.INPUT.input(type=inputType id=id name=name placeholder=placeholder required=required)&attributes(attributes)
+        if (label)
+            +e.LABEL.label(for=id)= label
+                //- if (required)
+                //-     span *
+        +e.error-icon
+            +icon('error')

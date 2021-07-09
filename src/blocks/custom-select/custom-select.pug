@@ -1,0 +1,15 @@
+mixin custom-select({name, options = [], placeholder = false, label = false, defaultValue = ''})
+    +b.custom-select&attributes(attributes)
+        if (label)
+            +e.LABEL.label !{label}
+        if (name)
+            +e.INPUT.value(type='hidden' name=name value=defaultValue)
+        +e.BUTTON.selected(type='button' tabindex='0')
+            | !{placeholder || options[0]}
+        +e.dropdown(aria-expanded='false')
+            +e.UL.options
+                if (options && options.length > 0)
+                    each option in options
+                        +e.LI.option(tabindex='0')= option
+                else
+                    block

@@ -1,0 +1,10 @@
+include ../slider-controls/slider-controls
+
+mixin base-slider()
+    +b.base-slider
+        +e.slides
+            each slide, index in [...new Array(5)]
+                +e.slide
+                    +e.card !{index}
+        +e.controls
+            +slider-controls

@@ -1,0 +1,54 @@
+@import 'variables';
+@import 'mixins';
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    position: relative;
+    min-width: 320px;
+
+    font-family: $font;
+    color: $text-color;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    display: flex;
+    flex-flow: column nowrap;
+
+    background-color: #e5e5e5;
+
+    &.menu-opened,
+    &.modal-opened,
+    &.search-opened {
+        overflow: hidden;
+    }
+
+    /* prevent transition on load */
+    &:not(.js-loaded) {
+        * {
+            transition: none !important;
+        }
+    }
+}
+
+.visually-hidden {
+    @include visually-hidden;
+}
+
+/** demo only styles */
+
+.demo-section {
+    padding: 48px 0;
+
+    &:not(:first-child) {
+        border-top: 1px solid $darkgrey;
+    }
+}
+

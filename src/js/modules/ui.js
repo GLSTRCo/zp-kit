@@ -29,7 +29,18 @@ let fixedNodes;
 function getScrollbarWidth() {
     if (scrollBarWidth || scrollBarWidth === 0) return scrollBarWidth;
 
-    scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+    /** copy from <https://htmldom.dev/calculate-the-size-of-scrollbar/> */
+    const outer = document.createElement('div');
+    outer.style.visibility = 'hidden';
+    outer.style.overflow = 'scroll';
+    const inner = document.createElement('div');
+    outer.appendChild(inner);
+    document.body.appendChild(outer);
+    scrollBarWidth = outer.offsetWidth - inner.offsetWidth;
+    document.body.removeChild(outer);
+
+    // scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+
     return scrollBarWidth;
 }
 
@@ -39,23 +50,25 @@ function getScrollbarWidth() {
  * sets padding-right for body and defined fixed nodes (position: fixed)
  * @param {('set'|'reset')} action
  */
-function compensateScrollbarWidth(action) {
+function compensateScrollbarWidth(action, ...anotherBlocks) {
     const scrollBarWidth = getScrollbarWidth();
 
     if (!fixedNodes) {
-        fixedNodes = [document.querySelector('.main-header.fixed')];
+        fixedNodes = [
+            document.querySelector('.main-header', '.main-header.fixed'),
+        ];
     }
 
     if (action === 'set') {
         document.body.style.paddingRight = scrollBarWidth + 'px';
 
-        fixedNodes.forEach(node => {
+        [...fixedNodes, ...anotherBlocks].forEach(node => {
             if (node) node.style.paddingRight = scrollBarWidth + 'px';
         });
     } else if (action === 'reset') {
         document.body.style.paddingRight = null;
 
-        fixedNodes.forEach(node => {
+        [...fixedNodes, ...anotherBlocks].forEach(node => {
             if (node) node.style.paddingRight = null;
         });
     } else {
@@ -98,9 +111,10 @@ const deviceType = {
  * @param {Object} props
  * @param {String} [props.display='block'] - display property
  * @param {Number} [props.speed = 160] - animation speed
+ * @param {String} [props.toggleClass = ''] - classList to toggle on animation end
  * @returns {Promise}
  */
-function fadeIn(el, { display = 'block', speed = 160 } = {}) {
+function fadeIn(el, { display = 'block', speed = 160, toggleClass = '' } = {}) {
     return new Promise(resolve => {
         /* no need to show again a visible element */
         if (!isHidden(el)) resolve();
@@ -117,6 +131,7 @@ function fadeIn(el, { display = 'block', speed = 160 } = {}) {
                 id = requestAnimationFrame(fade);
             } else {
                 el.style.opacity = '1';
+                if (toggleClass) el.classList.toggle(toggleClass);
                 resolve();
             }
 
@@ -131,9 +146,10 @@ function fadeIn(el, { display = 'block', speed = 160 } = {}) {
  * @param {HTMLElement} el
  * @param {Object} props
  * @param {Number} [props.speed = 160] - animation speed
+ * @param {String} [props.toggleClass = ''] - classList to toggle on animation end
  * @returns {Promise}
  */
-function fadeOut(el, { speed = 160 } = {}) {
+function fadeOut(el, { speed = 160, toggleClass = '' } = {}) {
     return new Promise(resolve => {
         /* no need to hide again an invisible element */
         if (isHidden(el)) resolve();
@@ -147,6 +163,7 @@ function fadeOut(el, { speed = 160 } = {}) {
             const newOpacity = currentOpacity - animationSpeed;
             if (newOpacity < 0) {
                 el.style.display = 'none';
+                if (toggleClass) el.classList.toggle(toggleClass);
                 resolve();
             } else {
                 el.style.opacity = newOpacity.toString();
@@ -165,12 +182,16 @@ function fadeOut(el, { speed = 160 } = {}) {
  * @param {Object} props
  * @param {Number} [props.speed = 200] - animation speed
  * @param {String} [props.display='block'] - display property
+ * @param {String} [props.toggleClass = ''] - classList to toggle on animation end
  */
-function fadeToggle(el, { speed = 200, display = 'block' } = {}) {
+function fadeToggle(
+    el,
+    { speed = 200, display = 'block', toggleClass = '' } = {}
+) {
     if (isHidden(el)) {
-        fadeIn(el, { speed: speed, display: display });
+        fadeIn(el, { speed, display, toggleClass });
     } else {
-        fadeOut(el, { speed: speed });
+        fadeOut(el, { speed });
     }
 }
 
