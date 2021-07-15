@@ -55,7 +55,9 @@ function compensateScrollbarWidth(action, ...anotherBlocks) {
 
     if (!fixedNodes) {
         fixedNodes = [
-            document.querySelector('.main-header', '.main-header.fixed'),
+            /** just an example */
+            // document.querySelector('.main-header'),
+            // document.querySelector('.main-header.fixed'),
         ];
     }
 
