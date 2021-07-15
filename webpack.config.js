@@ -101,6 +101,7 @@ module.exports = {
         path: path.resolve(__dirname, './dist'),
     },
     target: 'web',
+    devtool: isDev ? 'source-map' : false,
     resolve: {
         alias: {
             '@': path.resolve(__dirname, 'src'),
