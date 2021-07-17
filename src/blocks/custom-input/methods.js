@@ -215,7 +215,7 @@ function setInputValidationHandlers(inputs) {
             case 'email':
                 handleEmailInput(input);
                 break;
-            case 'birhday':
+            case 'birthday':
                 handleBirthdayInput(input);
                 break;
             default:
@@ -246,7 +246,7 @@ function fireInputsValidation(inputs) {
             case 'email':
                 validateEmailInput(input);
                 break;
-            case 'birhday':
+            case 'birthday':
                 validateBirthdayInput(input);
                 break;
             default:
