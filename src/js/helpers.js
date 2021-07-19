@@ -159,6 +159,49 @@ export function lazyLoadPictures(imagesContainers, opts = {}) {
 
 /**
  *
+ * @export
+ * @param {[HTMLImageElement]} imagesNodes
+ */
+export function lazyLoadBackgrounds(nodes) {
+    if ('IntersectionObserver' in window) {
+        const setRootMargin = () => {
+            return deviceType.isMobile
+                ? '0px 0px 200px 0px'
+                : '0px 0px 100% 0px';
+        };
+
+        const getSrc = node => {
+            if (deviceType.isMobile && node.dataset.backgroundMobile) {
+                return node.dataset.backgroundMobile;
+            } else {
+                return node.dataset.background;
+            }
+        };
+
+        const observer = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const node = entry.target;
+                        node.style.backgroundImage = `url(${getSrc(node)})`;
+
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { rootMargin: setRootMargin() }
+        );
+
+        nodes.forEach(node => observer.observe(node));
+    } else {
+        nodes.forEach(
+            node => (node.style.backgroundImage = `url(${getSrc(node)})`)
+        );
+    }
+}
+
+/**
+ *
  *
  * @export
  * @param {[HTMLImageElement]} imagesNodes
