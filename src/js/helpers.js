@@ -305,6 +305,25 @@ export function chunkArray(arr, chunk_size) {
     return tempArray;
 }
 
+/**
+ *
+ * @param {String} text to copy
+ * @returns {Promise}
+ */
+export function copyToClipboard(text) {
+    return new Promise(resolve => {
+        const el = document.createElement('textarea');
+        el.value = text;
+        document.body.appendChild(el);
+        el.select();
+
+        document.execCommand('copy');
+        document.body.removeChild(el);
+
+        resolve()
+    });
+}
+
 export function emptyDiv() {
     return document.createElement('div');
 }
